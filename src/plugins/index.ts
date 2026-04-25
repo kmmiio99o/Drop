@@ -72,7 +72,7 @@ async function runPluginLifecycle(id: string, method: "start" | "eagerStart"): P
     }
 
     try {
-        await instance[method]?.();
+        instance[method]?.();
         usePluginSettings.getState().updatePluginSetting(id, true);
     } catch (error) {
         const errorMsg = `[${id}] Failed: ${error}`;
@@ -89,7 +89,7 @@ export async function stopPlugin(id: string): Promise<void> {
     assert(instance, id, "stop a non-started plugin");
 
     try {
-        await instance.stop?.();
+        instance.stop?.();
         usePluginSettings.getState().updatePluginSetting(id, false);
     } catch (error) {
         console.error(`[${id}] Failed to stop:`, error);
