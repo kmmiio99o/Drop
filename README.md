@@ -1,10 +1,10 @@
 <div align="center">
- <img height="150" height="150" alt="Rain logo" src="src/assets/rain.png" />
+ <img height="150" height="150" alt="Rain logo" src="src/assets/drop.png" />
 </div>
 
 <div align="center">
-  <h1><b>rain</b></h1>
-  <p><i>A custom Discord client for Mobile!<br>Designed to be lightweight and feature packed.</i></p>
+  <h1><b>Drop</b></h1>
+  <p><i>A custom Discord client for Mobile!<br>Designed to be lightweight and feature packed.</i>Based off Rain, another client.</p>
 
   [![Discord](https://img.shields.io/discord/1368145952266911755?logo=discord&logoColor=%23ffffffff&color=%231D88CF&link=https%3A%2F%2Fdiscord.gg%2F6cN7wKa8gp)](https://discord.gg/6cN7wKa8gp)
   [![Static Badge](https://img.shields.io/badge/kofi-cocobo1-%23FF6433?style=flat&logo=ko-fi&labelColor=%23ffffff)](https://www.ko-fi.com/cocobo1)
@@ -13,17 +13,11 @@
 
 ## Install rain
 > [!NOTE]
-> rain is currently in beta. **Expect things to break and report bugs when you find them**
+> drop is currently in alpha. **Expect things to break and report bugs when you find them**
 
-### Android
+### Currently none
 
-- **[rainManager](https://codeberg.org/raincord/rainManager/releases/latest)**
-
-### iOS
-
-- **[rainTweak](https://codeberg.org/raincord/RainTweak/releases/latest)**
-
-## How can I support the project?
+## How can I support rain?
 
 rain can be supported in many ways, you can [contribute](#contributing), make a [bug report](#bug-reporting) or [donate](https://www.ko-fi.com/cocobo1)!
 

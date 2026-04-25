@@ -4,7 +4,7 @@ import { BundleUpdaterManager } from "@api/native/modules";
 import { useSettings } from "@api/settings";
 import { openAlert } from "@api/ui/alerts";
 import { resolveSemanticColor, semanticColors } from "@api/ui/components/color";
-import { CodebergIcon, KofiIcon,RainIcon } from "@assets";
+import { CodebergIcon, KofiIcon, dropIcon, RainIcon } from "@assets";
 import { Strings } from "@i18n";
 import { CODEBERG, DISCORD_SERVER, GITHUB, KOFI } from "@lib/info";
 import { NavigationNative } from "@metro/common";
@@ -47,7 +47,7 @@ export default function General() {
                     <InfoCard
                         title={Strings.UPDATER}
                         style={{ flex: 1 }}
-                        icon={<TableRow.Icon source={{ uri: RainIcon }} />}
+                        icon={<TableRow.Icon source={{ uri: dropIcon }} />}
                         onPress={() =>
                             navigation.push("RAIN_CUSTOM_PAGE", {
                                 title: Strings.UPDATER,
@@ -74,7 +74,7 @@ export default function General() {
                 <TableRowGroup title={Strings.INFO}>
                     <TableRow
                         label={Strings.RAIN}
-                        icon={<TableRow.Icon source={{ uri: RainIcon }} />}
+                        icon={<TableRow.Icon source={{ uri: dropIcon }} />}
                         trailing={<TableRow.TrailingText text={debugInfo.rain.version} />}
                         onPress={() => {
                             easterEggTaps += 1;
