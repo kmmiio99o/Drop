@@ -24,22 +24,22 @@ function PluginPage(props: PluginPageProps) {
 
     const sortOptions = {
         [Strings.SORT_NAME_AZ]: (a: UnifiedPluginModel, b: UnifiedPluginModel) => {
-            if (isCore(a.id) !== isCore(b.id)) return isCore(a.id) ? -1 : 1;
+            if (isCore(a.id) !== isCore(b.id)) return isCore(a.id) ? 1 : -1;
             if (isPinned(a.id) !== isPinned(b.id)) return isPinned(b.id) ? 1 : -1;
             return a.name.localeCompare(b.name);
         },
         [Strings.SORT_NAME_ZA]: (a: UnifiedPluginModel, b: UnifiedPluginModel) => {
-            if (isCore(a.id) !== isCore(b.id)) return isCore(a.id) ? -1 : 1;
+            if (isCore(a.id) !== isCore(b.id)) return isCore(a.id) ? 1 : -1;
             if (isPinned(a.id) !== isPinned(b.id)) return isPinned(b.id) ? 1 : -1;
             return b.name.localeCompare(a.name);
         },
         [Strings.ENABLED]: (a: UnifiedPluginModel, b: UnifiedPluginModel) => {
-            if (isCore(a.id) !== isCore(b.id)) return isCore(a.id) ? -1 : 1;
+            if (isCore(a.id) !== isCore(b.id)) return isCore(a.id) ? 1 : -1;
             if (isPinned(a.id) !== isPinned(b.id)) return isPinned(b.id) ? 1 : -1;
             return Number(b.isEnabled()) - Number(a.isEnabled());
         },
         [Strings.DISABLED]: (a: UnifiedPluginModel, b: UnifiedPluginModel) => {
-            if (isCore(a.id) !== isCore(b.id)) return isCore(a.id) ? -1 : 1;
+            if (isCore(a.id) !== isCore(b.id)) return isCore(a.id) ? 1 : -1;
             if (isPinned(a.id) !== isPinned(b.id)) return isPinned(b.id) ? 1 : -1;
             return Number(a.isEnabled()) - Number(b.isEnabled());
         },
@@ -74,12 +74,7 @@ function PluginPage(props: PluginPageProps) {
             ]}
             sortOptions={sortOptions}
             defaultSortKey="Name (A-Z)"
-            filterOptions={{
-                [Strings.HIDE_CORE]: p => !p.id.startsWith("core"),
-                [Strings.SHOW_CORE]: () => true,
-            }}
             safeModeHint={{ message: Strings.HINT_SAFE_MODE }}
-            defaultFilterKey={Strings.HIDE_CORE}
             items={filteredItems}
             {...props}
         />

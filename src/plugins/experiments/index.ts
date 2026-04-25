@@ -28,7 +28,7 @@ export default definePlugin({
     name: "Experiments",
     description: "Enables Discord Staff settings, continue with caution",
     author: [Developers.cocobo1],
-    id: "dummy",
+    id: "experiments",
     version: "1.1.0",
     async start() {
         const settings = useSettings.getState();
