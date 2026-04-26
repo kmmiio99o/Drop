@@ -3,17 +3,14 @@ import { getDebugInfo } from "@api/debug";
 import { BundleUpdaterManager } from "@api/native/modules";
 import { useSettings } from "@api/settings";
 import { openAlert } from "@api/ui/alerts";
-import { resolveSemanticColor, semanticColors } from "@api/ui/components/color";
 import { CodebergIcon, dropIcon, KofiIcon } from "@assets";
 import { Strings } from "@i18n";
 import { CODEBERG, DISCORD_SERVER, GITHUB, KOFI } from "@lib/info";
 import { NavigationNative } from "@metro/common";
-import { AlertActionButton, AlertActions, AlertModal, Stack, TableRow, TableRowGroup, TableSwitchRow, Text } from "@metro/common/components";
-import { Image, Linking, ScrollView, View } from "react-native";
+import { AlertActionButton, AlertActions, AlertModal, Stack, TableRow, TableRowGroup, TableSwitchRow } from "@metro/common/components";
+import { Linking, ScrollView } from "react-native";
 
-import Updater, { checkForUpdate } from "../Updater";
 import About from "./About";
-import { InfoCard } from "./components/InfoCard";
 import Developers from "./Developers";
 
 async function disableDevOnlyPlugins() {
@@ -42,35 +39,6 @@ export default function General() {
     return (
         <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 38 }}>
             <Stack style={{ paddingVertical: 24, paddingHorizontal: 12 }} spacing={24}>
-                <View style={{ gap: 10 }}>
-                    <Text color="text-strong" variant="text-sm/semibold">{Strings.UPDATER}</Text>
-                    <InfoCard
-                        title={Strings.UPDATER}
-                        style={{ flex: 1 }}
-                        icon={<TableRow.Icon source={{ uri: dropIcon }} />}
-                        onPress={() =>
-                            navigation.push("RAIN_CUSTOM_PAGE", {
-                                title: Strings.UPDATER,
-                                render: () => <Updater />,
-                            })
-                        }
-                        trailing={
-                            (() => {
-                                if (checkForUpdate()) {
-                                    return (
-                                        <View >
-                                            <Image
-                                                source={findAssetId("ic_warning_24px")}
-                                                style={{ width: 32, height: 32, tintColor: resolveSemanticColor(semanticColors.STATUS_WARNING) }}
-                                            />
-                                        </View>
-                                    );
-                                }
-                                return `(${debugInfo.rain.version})`;
-                            })()
-                        }
-                    />
-                </View>
                 <TableRowGroup title={Strings.INFO}>
                     <TableRow
                         label={Strings.RAIN}
