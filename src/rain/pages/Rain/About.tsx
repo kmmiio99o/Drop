@@ -1,5 +1,5 @@
 import { getDebugInfo } from "@api/debug";
-import { RainIcon } from "@assets";
+import { dropIcon } from "@assets";
 import { Strings } from "@i18n";
 import { Stack, TableRowGroup } from "@metro/common/components";
 import { Platform, ScrollView } from "react-native";
@@ -13,7 +13,7 @@ export default function About() {
         {
             label: Strings.RAIN,
             version: debugInfo.rain.version,
-            icon: { uri: RainIcon },
+            icon: { uri: dropIcon },
         },
         {
             label: Strings.DISCORD,
