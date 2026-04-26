@@ -120,12 +120,17 @@ export function getStoredTheme(): ThemeInfo | null {
 }
 
 export function isChatBubblesSupported() {
+    const loaderName = getLoaderName();
+    if (loaderName.startsWith("RainXposed")) {
+        return true;
+    }
     if (isRainLoader()) {
         return rainLoaderIdentity.isChatBubblesSupported;
     }
-    else {
-        return false;
+    if (isPyonLoader()) {
+        return pyonLoaderIdentity.isChatBubblesSupported;
     }
+    return false;
 }
 
 export function isSysColorsSupported() {

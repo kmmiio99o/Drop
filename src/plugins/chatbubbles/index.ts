@@ -18,7 +18,10 @@ export default definePlugin({
     version: "1.0.0",
     requiresRestart: true,
     predicates: [
-        () => isChatBubblesSupported() === true,
+        () => {
+            const supported = isChatBubblesSupported();
+            return Boolean(supported);
+        },
     ],
     async eagerStart() {
         BubbleModule?.hookBubbles();
