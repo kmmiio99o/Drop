@@ -5,12 +5,12 @@ import { messageUtil } from "@metro/common";
 // todo: i18n
 export default () => <ApplicationCommand>{
     name: "debug",
-    description: "Send debug info about rain to the current channel",
+    description: "Send debug info about drop to the current channel",
     execute([ephemeral], ctx) {
         const info = getDebugInfo();
         const content = [
-            "**Rain Debug Info**",
-            `> Rain: ${info.rain.version} (${info.rain.loader.name} ${info.rain.loader.version})`,
+            "**Drop Debug Info**",
+            `> Drop: ${info.rain.version} (${info.rain.loader.name} ${info.rain.loader.version})`,
             `> Discord: ${info.discord.version} (${info.discord.build})`,
             `> React: ${info.react.version} (RN ${info.react.nativeVersion})`,
             `> Hermes: ${info.hermes.version} (bcv${info.hermes.bytecodeVersion})`,
