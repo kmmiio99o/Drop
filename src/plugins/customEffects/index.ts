@@ -12,8 +12,8 @@ export default definePlugin({
     id: "customeffects",
     version: "2.1.0",
 
-    async start() {
-        await loadAllEffectData();
+    start() {
+        loadAllEffectData();
 
         patchGetUserProfile();
         patchGetAllProfileEffects();
