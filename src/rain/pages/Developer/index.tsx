@@ -190,14 +190,6 @@ export default function Developer() {
                     </TableRowGroup>
 
                     <TableRowGroup title={Strings.OTHER}>
-                        <TableSwitchRow
-                            label={Strings.DISABLE_UPDATE_WARNING}
-                            icon={<TableRow.Icon source={findAssetId("UploadIcon")!} />}
-                            value={settings.disableUpdateWarnings}
-                            onValueChange={(v: boolean) =>
-                                settings.updateSettings({ disableUpdateWarnings: v })
-                            }
-                        />
                         <TableRow
                             arrow
                             label={Strings.ASSET_BROWSER}
@@ -243,6 +235,15 @@ export default function Developer() {
                                     icon={findAssetId(rdtFileExists === CheckState.TRUE ? "ic_message_delete" : "DownloadIcon")}
                                     style={{ marginLeft: 8 }}
                                 />
+                            }
+                        />
+                        <TableSwitchRow
+                            label={Strings.ENABLE_EVAL_COMMAND}
+                            subLabel={Strings.ENABLE_EVAL_COMMAND_DESC}
+                            icon={<TableRow.Icon source={findAssetId("copy")} />}
+                            value={settings.enableEvalCommand}
+                            onValueChange={(v: boolean) =>
+                                settings.updateSettings({ enableEvalCommand: v })
                             }
                         />
                     </TableRowGroup>

@@ -25,6 +25,7 @@ export interface Settings {
   };
   pinnedPlugins: string[];
   experimentsConfirmed?: boolean;
+  enableEvalCommand: boolean;
 }
 
 export interface LoaderConfig {
@@ -72,6 +73,7 @@ export const useSettings = create<SettingsStore>()(
             },
             pinnedPlugins: [], // Initialize empty
             experimentsConfirmed: false,
+            enableEvalCommand: false,
             updateSettings: newSettings => set(state => ({ ...state, ...newSettings })),
             togglePinnedPlugin: id => set(state => {
                 const pinned = state.pinnedPlugins || [];

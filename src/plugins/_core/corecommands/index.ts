@@ -17,6 +17,7 @@ export default definePlugin({
         unregisters.push(registerCommand(require("./builtins/debug").default()));
         unregisters.push(registerCommand(require("./builtins/plugins").default()));
         unregisters.push(registerCommand(require("./builtins/themes").default()));
+        unregisters.push(registerCommand(require("./builtins/eval").default()));
     },
     stop() {
         unregisters.forEach(fn => fn());
