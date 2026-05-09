@@ -101,7 +101,14 @@ export const useLoaderConfig = create<LoaderConfigStore>()(
                 url: "http://localhost:4040/rain.js",
             },
             loadReactDevTools: false,
-            updateLoaderConfig: newConfig => set(state => ({ ...state, ...newConfig })),
+            updateLoaderConfig: newConfig => set(state => ({
+                ...state,
+                ...newConfig,
+                customLoadUrl: {
+                    ...state.customLoadUrl,
+                    ...(newConfig.customLoadUrl || {}),
+                },
+            })),
         }),
         {
             name: "loader-config",
