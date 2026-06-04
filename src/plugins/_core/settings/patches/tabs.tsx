@@ -1,11 +1,15 @@
 import { after } from "@api/patcher";
 import { useSettings } from "@api/settings";
+import { NativeClientInfoModule } from "@api/native/modules";
 import { TableRow } from "@metro/common/components";
 import { findByPropsLazy } from "@metro/wrappers";
 import React from "react";
 
 import { registeredSections } from "..";
 import { CustomPageRenderer, wrapOnPress } from "./shared";
+
+// This is not the best solution but works for now
+const isNewDiscord = Number(NativeClientInfoModule.getConstants().Version) > 329;
 
 const settingConstants = findByPropsLazy("SETTING_RENDERER_CONFIG");
 const createListModule = findByPropsLazy("createList");
@@ -14,12 +18,12 @@ export function patchTabsUI(unpatches: (() => void | boolean)[]) {
     const getRows = () => Object.values(registeredSections)
         .flatMap(sect => sect.map(row => ({
             [row.key]: {
+                ...(isNewDiscord ? { useTitle: row.title } : { title: row.title }),
                 type: "pressable",
                 icon: row.icon,
                 IconComponent: () => <TableRow.Icon source={row.icon} />,
                 usePredicate: row.usePredicate,
                 useTrailing: row.useTrailing,
-                useTitle: row.title,
                 onPress: wrapOnPress(row.onPress, null, row.render, row.title()),
                 withArrow: true,
                 ...row.rawTabsConfig
@@ -37,7 +41,7 @@ export function patchTabsUI(unpatches: (() => void | boolean)[]) {
             ...rendererConfigValue,
             RAIN_CUSTOM_PAGE: {
                 type: "route",
-                useTitle: () => "Rain",
+                ...(isNewDiscord ? { useTitle: () => "Rain" } : { title: "Rain" }),
                 screen: {
                     route: "RAIN_CUSTOM_PAGE",
                     getComponent: () => CustomPageRenderer
